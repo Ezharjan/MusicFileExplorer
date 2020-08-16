@@ -1,0 +1,115 @@
+{
+    "name": "mstream",
+    "version": "4.7.0",
+    "description": "music streaming server",
+    "main": "cli-boot-wrapper.js",
+    "bin": {
+        "mstream": "cli-boot-wrapper.js"
+    },
+    "engines": {
+        "node": ">=8.0.0"
+    },
+    "scripts": {
+        "start": "node cli-boot-wrapper.js",
+        "wizard": "node cli-boot-wrapper.js --wizard",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/IrosTheBeggar/mStream"
+    },
+    "author": {
+        "name": "Paul Sori",
+        "email": "paul@mstream.io"
+    },
+    "homepage": "https://mstream.io/",
+    "license": "GPL-3.0",
+    "build": {
+        "appId": "io.mstream.server",
+        "productName": "mStream Server",
+        "electronVersion": "6.1.3",
+        "asar": false,
+        "files": [
+            "**/*",
+            "!docs/*",
+            "!dist/*",
+            "!image-cache/*",
+            "!save/*",
+            "!frp/*",
+            "!sync/*",
+            "!.git/*",
+            "!.vscode/*",
+            "frp/readme.md",
+            "!test.json",
+            "!package-lock.json"
+        ],
+        "mac": {
+            "files": [
+                "frp/mstream-ddns-osx",
+                "sync/syncthing-osx"
+            ],
+            "category": "public.app-category.music",
+            "binaries": [
+                "frp/mstream-ddns-osx",
+                "sync/syncthing-osx"
+            ]
+        },
+        "win": {
+            "files": [
+                "frp/mstream-ddns-win.exe",
+                "sync/syncthing.exe"
+            ],
+            "certificateSubjectName": "Iros Software LLC",
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": [
+                        "x64",
+                        "ia32"
+                    ]
+                }
+            ]
+        },
+        "linux": {
+            "files": [
+                "frp/mstream-ddns-linux",
+                "sync/syncthing-linux"
+            ]
+        },
+        "publish": {
+            "provider": "github",
+            "repo": "mStream",
+            "owner": "IrosTheBeggar"
+        }
+    },
+    "dependencies": {
+        "@hapi/joi": "^16.1.7",
+        "archiver": "^3.1.1",
+        "auto-launch": "^5.0.5",
+        "axios": "^0.19.1",
+        "body-parser": "^1.19.0",
+        "busboy": "^0.3.1",
+        "colors": "^1.4.0",
+        "commander": "^4.1.0",
+        "electron-updater": "^4.1.2",
+        "express": "^4.17.1",
+        "fast-xml-parser": "^3.16.0",
+        "ffbinaries": "^1.1.4",
+        "fluent-ffmpeg": "^2.1.2",
+        "inquirer": "^7.0.3",
+        "inquirer-select-directory": "^1.2.0",
+        "jsonwebtoken": "^8.5.1",
+        "lokijs": "^1.5.8",
+        "m3u8-parser": "^4.4.0",
+        "make-dir": "^3.0.0",
+        "mime-types": "^2.1.26",
+        "music-metadata": "^6.2.0",
+        "nanoid": "^2.1.9",
+        "winston": "^3.2.1",
+        "ws": "^7.2.1"
+    },
+    "devDependencies": {
+        "electron-builder": "^22.7.0"
+    }
+}
